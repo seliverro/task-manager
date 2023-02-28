@@ -1,0 +1,41 @@
+﻿version: '3.7'
+
+networks:
+  default:
+    name: todolist
+    
+services:
+
+  backend:
+    container_name: backend
+    build:
+      dockerfile: ./Dockerfile
+    depends_on:
+      - postgresdb
+    ports:
+      - "5034:80"
+      
+  frontend:
+    container_name: frontend
+    build:
+      context: ./angular-todo-list
+    depends_on:
+      - postgresdb
+      - backend
+    ports:
+      - "8080:80"
+      
+  postgresdb:
+    container_name: postgresdb
+    image: postgres:14.4
+    expose:
+      - "5432"
+ #   volumes:
+#      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: postgres
+    restart: always
+    ports:
+      - "5435:5432"  

@@ -1,0 +1,61 @@
+<div *ngIf="selectedTask">
+    <h2>{{selectedTask.summary | uppercase}} Details</h2>
+    <div>id: {{selectedTask.id}}</div>
+    <div>
+        <div>
+            <label for="task-summary">summary: </label>
+            <input id="task-summary" [(ngModel)]="selectedTask.summary" placeholder="summary">
+        </div>
+        <div>
+            <label for="task-summary">description: </label>
+            <input id="task-description" [(ngModel)]="selectedTask.description" placeholder="description">
+        </div>
+        <div>
+            <label for="task-summary">priority: </label>
+            <input type="number" id="task-priority" [(ngModel)]="selectedTask.priority" placeholder="priority">
+        </div>
+        <div>
+            <label for="task-summary">status: </label>
+            <input type="number" id="task-status" [(ngModel)]="selectedTask.status" placeholder="status">
+        </div>
+        <div>
+            <label for="task-summary">created: </label>
+            <input disabled="disabled" id="created" [(ngModel)]="selectedTask.created" placeholder="created">
+        </div>
+        <div>
+            <label for="task-summary">dueDate: </label>
+            <input id="dueDate" [(ngModel)]="selectedTask.dueDate" placeholder="dueDate">
+        </div>
+    </div>
+    <button type="button" class="clear" (click)="onPressSave()">Save</button>
+    <select class="rounded-inputs20 select-select col-md-3" #parentsComponent (change)="onParentDropdownValueChange(parentsComponent.value)">
+        <option *ngFor="let parent of parents" [value]="parent.id">{{parent.summary}}</option>
+    </select>
+    <button type="button" class="clear" (click)="onPressNewParent()">Set new parent</button>
+</div>
+
+<h2 *ngIf="!getCurrentParent()">Root Tasks</h2>
+<h2 *ngIf="getCurrentParent()">Child tasks of {{getCurrentParent()?.summary}} ({{getCurrentParent()?.id}})</h2>
+<button type="button" class="clear" (click)="onPressParent()">Go to parent</button>
+<button type="button" class="clear" (click)="onPressCreate()">Create new task</button>
+<table class="tasks">
+    <tr>
+        <th><a (click)="sortOn('summary')">Summary</a></th>
+        <th><a (click)="sortOn('created')">Created</a></th>
+        <th><a (click)="sortOn('dueDate')">Due date</a></th>
+        <th><a (click)="sortOn('priority')">Priority</a></th>
+        <th><a (click)="sortOn('status')">Status</a></th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+        <td><button [class.selected]="task === selectedTask" type="button" (click)="onSelect(task)">
+            <span class="badge">{{task.id}}</span>
+            <span class="summary">{{task.summary}}</span>
+        </button></td>
+        <td>{{task.created}}</td>
+        <td>{{task.dueDate}}</td>
+        <td>{{task.priority}}</td>
+        <td>{{task.status}}</td>
+        <td><button [disabled]="!task.id" type="button" class="clear" (click)="onPressChildren(task)">Children</button></td>
+        <td><button type="button" class="clear" (click)="onPressDelete(task)">Delete</button></td>
+    </tr>
+</table>

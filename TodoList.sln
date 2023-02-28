@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList", "TodoList\TodoList.csproj", "{36C576F9-A786-430D-B58C-5F13BF73524F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Postgre", "TodoList.Postgre\TodoList.Postgre.csproj", "{86F910A4-C442-4819-AB10-AF5DA34F392D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C576F9-A786-430D-B58C-5F13BF73524F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C576F9-A786-430D-B58C-5F13BF73524F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C576F9-A786-430D-B58C-5F13BF73524F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C576F9-A786-430D-B58C-5F13BF73524F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F910A4-C442-4819-AB10-AF5DA34F392D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F910A4-C442-4819-AB10-AF5DA34F392D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F910A4-C442-4819-AB10-AF5DA34F392D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F910A4-C442-4819-AB10-AF5DA34F392D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
